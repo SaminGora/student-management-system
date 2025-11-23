@@ -1,0 +1,21 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+/*view classes */
+.table-data h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.table-data{
+    margin: 40px auto;
+    padding: 25px;
+    text-align: center;
+    width: 800px; 
+}

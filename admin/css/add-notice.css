@@ -1,0 +1,78 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+
+
+.container .add-notice {   
+    margin: 40px auto;
+    padding: 25px;
+    width:60%;              
+}
+.sub-head{
+    margin-top:100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+ .add-btn{
+   width: 180px;
+   padding: 15px;
+   margin: 15px auto;
+   border: none;
+    background-color: rgb(132, 132, 209);
+   border-radius:15px;
+    cursor: pointer;
+}
+.add-btn:hover{
+background-color: rgb(85, 85, 149);
+
+}
+.add-notice label{
+    display: inline-block;
+    width:100%;
+    margin: 8px;
+    text-align: left;
+}
+.add-notice input[type="text"],
+.add-notice select{
+    border: 1px solid #030303;
+    width: 100%;
+    height: 60px;
+    padding:0 8px;
+}
+.error, .success {
+    max-width: 400px;         
+    margin: 10px auto;          
+    padding: 10px 15px;         
+    border-radius: 8px;         
+    text-align: center;        
+    font-size: 14px;            
+    font-weight: bold;         
+}
+.error{
+    background-color: rgb(212, 136, 136);
+    
+}
+.success{
+    background-color: rgb(188, 225, 133);
+    
+}
+
+/*view classes */
+.table-data h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.table-data{
+    margin: 40px auto;
+    padding: 25px;
+    text-align: center;
+    width: 800px; 
+}

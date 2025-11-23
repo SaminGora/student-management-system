@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin:0;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+.container .attendence{   
+    margin: 20px auto;
+    padding: 25px;
+    width: 60%;              
+}
+.container h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.attendence{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+ .attendence a{
+    text-decoration: none;
+    font-size: 1.5em;
+    color: black;
+}
+.attendence .btn{
+    display: inline-flex;
+    justify-content: center;
+    width: 250px;
+    height: 80px;
+    border-radius:18px;
+    background-color: bisque;
+    
+}
+.table-data h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.table-data{
+    margin: 40px auto;
+    padding: 0 50px;
+    text-align: left;
+    max-width:1000px;
+    overflow-x:auto;
+    overflow-y:auto;
+}

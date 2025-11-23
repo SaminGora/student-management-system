@@ -1,0 +1,53 @@
+.containers{
+    background:transparent;
+    backdrop-filter: blur(18px);
+    width: 350px;
+    margin:15em auto;
+    position: absolute;
+    padding: 25px;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    box-shadow: 0 20px 35px rgb(0, 0, 1);
+}
+.box h1 {
+    text-align: center;
+    font-family: cursive;
+    font-size: 20px;
+    padding: 8px 0;
+}
+input {
+    padding: 5px 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    border-bottom: 2px solid black;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* removes blue bg */
+  -webkit-text-fill-color: rgb(5, 5, 5) !important; /* keeps text white */
+  transition: background-color 9999s ease-in-out 0s; /* hack to delay bg repaint */
+}
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
+}
+.box i {
+    position: absolute;
+    margin-left:340px;
+}
+.btn {
+    background-color: rgb(8, 194, 89);
+    border: none;
+    border-radius:25px;
+    padding:10px ;
+    margin:15px 0px;
+}
+.btn:hover{
+    background-color: rgb(146, 255, 37);
+}
+.error{
+    background-color: rgb(210, 123, 123);
+}

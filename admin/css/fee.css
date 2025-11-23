@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin:0;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+.container .fee{   
+    margin: 20px auto;
+    padding: 25px;
+    width: 60%;              
+}
+.container h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.fee{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+ .fee a{
+    text-decoration: none;
+    font-size: 1.5em;
+    color: black;
+}
+.fee .btn{
+    display: inline-flex;
+    justify-content: center;
+    width: 250px;
+    height: 80px;
+    border-radius:18px;
+    background-color: bisque;
+    
+}

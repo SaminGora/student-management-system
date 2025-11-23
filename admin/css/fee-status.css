@@ -1,0 +1,72 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+
+.container h2{
+    margin-top: 100px;
+    text-align: center;
+}
+.container,form{   
+    margin: 10px auto;
+    text-align: center;
+    padding: 25px;
+    max-width: 800px; 
+    width: 100%;
+}
+ label{
+    display: inline-block;
+    width: 100px;
+    margin: 8px;
+    text-align: left;
+}
+ input[type="text"],[type='date'],[type='number'],
+ select{
+   width:40%;
+   border: none;
+   margin:8px;
+}
+
+.error, .success {
+    max-width: 400px;         
+    margin: 10px auto;          
+    padding: 10px 15px;         
+    border-radius: 8px;         
+    text-align: center;        
+    font-size: 14px;            
+    font-weight: bold;         
+}
+.error{
+    background-color: rgb(212, 136, 136);
+    
+}
+.success{
+    background-color: rgb(188, 225, 133);
+}
+/*view teachers */
+ .table-data input{
+    text-align: center;
+    
+ }
+ .table-data {
+    margin:25px 0 0 250px;
+    padding: 25px 30px;
+    width: 80%;
+    overflow-x: auto; /* for responsive scrolling */
+}
+ @media only screen and (max-width: 600px){
+     .table-data {
+        padding: 0 15px;
+        margin: 55px auto;
+        width: 100%;
+        
+     }
+    
+ }
+

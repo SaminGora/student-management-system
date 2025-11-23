@@ -1,0 +1,106 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html, body {
+    height:80%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
+}
+
+.container .add-students {   
+    margin: 10px auto;
+    padding: 25px;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgb(216, 204, 204);
+}
+.sub-head{
+    margin-top:100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.add-btn{
+    background-color: rgb(132, 132, 209);
+    width: 180px;
+    border-radius: 25px;
+    margin:25px;
+    cursor: pointer;
+}
+.add-btn:hover{
+background-color: rgb(85, 85, 149);
+
+}
+.add-students label{
+    display: inline-block;
+    width:180px;
+    margin: 8px;
+    text-align: left;
+}
+.add-students input,select{
+    border-radius: 8px;
+    border: 2px solid black;
+    width:50%;
+    outline: none;
+}
+.gender-group {
+    display: inline-block;
+    gap: 20px; /* space between Male and Female */
+    align-items: center;
+}
+.gender-group label {
+    width: 180px;     
+    margin: 0 10px 0 0;
+}
+.error, .success {
+    max-width: 400px;         
+    margin: 10px auto;          
+    padding: 10px 15px;         
+    border-radius: 8px;         
+    text-align: center;        
+    font-size: 14px;            
+    font-weight: bold;         
+}
+.error{
+    background-color: rgb(212, 136, 136);
+    
+}
+.success{
+    background-color: rgb(188, 225, 133);
+    
+}
+/*view teachers */
+.table-data h2{
+    margin-top: 100px;
+    text-align: center;
+}
+ .table-data {
+    margin:20px 0 0 250px;
+    padding: 25px 30px;
+    width: 80%;
+    overflow-x: auto; /* for responsive scrolling */
+}
+.button{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+.button a {
+  white-space: nowrap;
+}
+ .table-data th,td{
+    text-align: center;
+ }
+ @media only screen and (max-width: 600px){
+     .table-data {
+        padding: 0 15px;
+        margin: auto;
+        width: 100%;
+        
+     }
+    
+ }
