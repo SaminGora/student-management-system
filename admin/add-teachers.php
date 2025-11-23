@@ -52,7 +52,7 @@ if (isset($_POST['tadd'])){
             $mail->Host       = 'smtp.gmail.com';    // Gmail SMTP server
             $mail->SMTPAuth   = true;
             $mail->Username   = 'gorasamin6@gmail.com';   // your Gmail
-            $mail->Password   = 'fxgt hzqa dfrt fktv';     // ⚡ Use Gmail App Password, not your real password
+            $mail->Password   =      // ⚡ Use Gmail App Password, not your real password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 
