@@ -43,7 +43,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'gorasamin6@gmail.com';  // your Gmail
-        $mail->Password   = 'fxgt hzqa dfrt fktv';   // your App Password
+        $mail->Password   =    // your App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
