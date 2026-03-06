@@ -1,10 +1,9 @@
 <?php
  use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
-  require_once __DIR__ . '/vendor/autoload.php';
- $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+  require_once __DIR__ . '/../vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
-require __DIR__ . '/../vendor/autoload.php';
 include_once 'D:/xampp/htdocs/studentmgt/connection.php';
 session_start();
 // If not logged in → go back to home.php
@@ -52,7 +51,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'gorasamin6@gmail.com';  // your Gmail
+
         $mail->Password   = $_ENV['gmail_pass'];    // your App Password
+
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 

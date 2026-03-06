@@ -1,8 +1,8 @@
 <?php
  use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
- require_once __DIR__ . '/vendor/autoload.php';
- $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+ require_once __DIR__ . '/../vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 session_start();
 // If not logged in → go back to home.php
@@ -10,7 +10,6 @@ if (!isset($_SESSION['admin_id'])) {
     header("Location:login.php");
     exit();
 }
-require '../vendor/autoload.php';
 include_once('../connection.php');
 
 if (isset($_POST['tadd'])){
@@ -60,11 +59,9 @@ if (isset($_POST['tadd'])){
             $mail->Host       = 'smtp.gmail.com';    // Gmail SMTP server
             $mail->SMTPAuth   = true;
             $mail->Username   = 'gorasamin6@gmail.com';   // your Gmail
-<<<<<<< HEAD
-            $mail->Password   =      // ⚡ Use Gmail App Password, not your real password
-=======
+
             $mail->Password   = $_ENV['gmail_pass'];       // ⚡ Use Gmail App Password, not your real password
->>>>>>> e0fe5e9 (updating env file)
+
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 

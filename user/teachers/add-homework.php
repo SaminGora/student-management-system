@@ -2,10 +2,9 @@
 include_once("../../connection.php");
 use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
-  require_once __DIR__ . '/vendor/autoload.php';
- $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+  require_once __DIR__ . '/../../vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
-require '../../vendor/autoload.php';
 
 if(isset($_POST['add-homework'])){
     $title=$_POST['h-title'];
