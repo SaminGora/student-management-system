@@ -1,3 +1,4 @@
+
 <?php 
 include('../../connection.php');
 $id=$_SESSION['student_id'];
@@ -54,18 +55,21 @@ $id=$_SESSION['student_id'];
   </div>
   </div>
   <div class="profile">
-     <i class="bi bi-person"id="profile-icon"></i>Admin
+    <img class="profile-img" src="<?php echo "$img"?>"><strong><?php echo $name ?> </strong>
  </div>
  <hr>
 
   <div class="sidebar-link">
   <ul>
   <li><a href="dashboard.php">Dashboard</a><i class="bi bi-pc-display-horizontal"></i></li>
-  <li><a href="view-attendence.php">Attendence</a><i class="bi bi-pc-display-horizontal"></i></li>
+  <li><a href="view-attendence.php">Attendence</a><i class="bi bi-box-arrow-up-right"></i>
    <li><a href="view-notice.php">View notice</a><i class="bi bi-bell-fill"></i></li>
-       <li><a href="view-homework.php">View homework</a><i class="bi bi-bell-fill"></i></li>
+       <li><a href="view-homework.php">View homework</a><i class="bi bi-house-add"></i></li>
+       <li><a href="view-notes.php">View Notes</a><i class="bi bi-file-earmark-ppt-fill"></i></li>
+         <li><a href="fee-status.php">Fee Status</a><i class="bi bi-wallet2"></i></li>
+         <li><a href="view-result.php">Result</a><i class="bi bi-chat-right-quote-fill"></i></li>
   </ul>
-  
+
   </div>
 </aside>
 <script src="./js/sidebar.js"></script>

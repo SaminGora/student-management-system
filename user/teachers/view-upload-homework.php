@@ -26,6 +26,7 @@ $hwid=$_GET['uploadid'];
        ?>
        <p><strong>Title:</strong> <?php echo $title ?><br />
         <strong>Last Date of Submission:</strong> <?php echo $sub_date?></p>
+        <div class="table">
         <table  class="table table-bordered">
         <tr>
             <th>S.N</th>
@@ -62,6 +63,7 @@ $hwid=$_GET['uploadid'];
         ?>
     
         </table>
+        </div>
     </div> 
 </body>
 </html>

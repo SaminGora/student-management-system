@@ -1,6 +1,12 @@
 <!-- delete class -->
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 if(isset($_GET['deleteid'])){
     $class_id=$_GET['deleteid'];
     $sql="delete from classes where class_id=$class_id";

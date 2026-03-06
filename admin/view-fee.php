@@ -1,5 +1,11 @@
 <?php 
 include '../connection.php';
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 $class = $_GET['class'];
 ?>
 
@@ -9,12 +15,13 @@ $class = $_GET['class'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
-   <link rel="stylesheet" href="/studentmgt/admin/css/fee-status.css">
+   <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
   <title>View Fee</title>
 </head>
 <body>
 <?php include'includes/sidebar.php';?>
 <div class="table-data">
+  <h2>Fee Status</h2>
 <form method="post">
   <label>Month:</label>
   <input type="search" placeholder="e.g jan" name="search">

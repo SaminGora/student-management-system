@@ -1,77 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.content{
-    margin-top:120px;
-    margin-left:350px ;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-   
+:root {
+    --primary: #2c3e50;
+    --secondary: #34495e;
+    --accent: #3498db;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+    --danger: #e74c3c;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
-/* link boxes */
-.content .total-class,.total-students,.total-teachers,.total-notice,.add-students,.add-class,.add-teachers{
-    text-align: center;
-    width: 210px;
-    height: 110px;
-    border-radius: 15px;
-    padding: 6px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-.total-class{
-background-color: rgb(199, 187, 170);
-display: flex;
-justify-content: space-around;
-align-items: center;
+
+body {
+    background-color: #f4f6f9;
 }
-.class-icon{
-    background-color: rgb(93, 195, 93);
-    width:45px;
-    height: 45px;
-    font-size: 25px;
+
+.content {
+    margin-top: 80px;
+    margin-left: 280px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Dashboard Cards */
+.total-class,
+.total-students,
+.total-teachers,
+.total-notice {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    height: 100%;
+}
+
+.total-class:hover,
+.total-students:hover,
+.total-teachers:hover,
+.total-notice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Colored strip */
+.total-class,
+.total-students,
+.total-teachers,
+.total-notice {
+    border-left: 5px solid;
+}
+
+.total-class {
+    border-color: var(--warning);
+}
+
+.total-students {
+    border-color: var(--danger);
+}
+
+.total-teachers {
+    border-color: var(--success);
+}
+
+.total-notice {
+    border-color: var(--accent);
+}
+
+.content h6 {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.count-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+}
+
+.content a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.content a:hover {
+    color: var(--accent);
+}
+
+.class-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     color: white;
 }
-.total-students{
-    background-color: rgb(190, 146, 146);
+
+.total-class .class-icon {
+    background-color: rgba(241, 196, 15, 0.2);
+    color: var(--warning);
+}
+
+.total-students .class-icon {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--danger);
+}
+
+.total-teachers .class-icon {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.total-notice .class-icon {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: var(--accent);
+}
+
+/* Notice specific to student/teacher if needed */
+.notice {
+    margin-left: 280px;
+    padding: 1rem 2rem;
+    background-color: #e8f4fd;
+    border-left: 5px solid #3498db;
+    margin-bottom: 1rem;
+    border-radius: 8px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.total-teachers{
-    background-color: rgb(134, 209, 140);
-     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.total-notice{
-    background-color: rgb(109, 161, 204);
-     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.quick-link h2 {
-    grid-column: span 4;
-}
-.quick-link{
-    margin-top:20px;
-    margin-left:350px ;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap: 5px;
-    
+.notice h2 {
+    font-size: 1.2rem;
+    color: var(--primary);
 }
 
-.add-students{
-    background-color: rgb(118, 243, 249);
+.notice p {
+    color: var(--secondary);
 }
-.add-class{
-    background-color: rgba(149, 162, 70, 0.682);
-}
-.add-teachers{
-    background-color: rgb(90, 84, 125);
-}
-@media only screen and (max-width: 600px){
-    .content{
-        grid-template-columns: 1fr 1fr;
-         margin-top:120px;
-         margin-left: 50px;
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+
+    .content,
+    .notice {
+        margin-left: 0;
     }
 }

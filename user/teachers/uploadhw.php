@@ -1,5 +1,7 @@
-<?php
+<?php 
 include('../../connection.php');
+
+
 $hwid=$_GET['hwid'];
 $sts_id=$_GET['studentid'];
 if(isset($_POST['remark-btn'])){

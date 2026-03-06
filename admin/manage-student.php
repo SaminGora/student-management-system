@@ -1,6 +1,12 @@
 <!-- edit class -->
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 if(isset($_GET['deleteid'])){
     $sts_id=$_GET['deleteid'];
     $sql = "SELECT image FROM students WHERE student_id = '$sts_id'";
@@ -14,6 +20,19 @@ if(isset($_GET['deleteid'])){
             unlink($file_path);
         }
       }
+        // 1. Delete Student Results
+    mysqli_query($conn, "DELETE FROM result WHERE student_id=$sts_id");
+
+    // 2. Delete Student Fees
+    mysqli_query($conn, "DELETE FROM fees WHERE student_id=$sts_id");
+    
+    // 3. Delete Student Attendance
+    mysqli_query($conn, "DELETE FROM attendence WHERE student_id=$sts_id");
+    
+    // 4. Delete Uploaded Homework
+    mysqli_query($conn, "DELETE FROM uploadhomework WHERE sts_id=$sts_id");
+
+    // 5. Finally, Delete the Student
     $sql="delete from students where student_id=$sts_id";
     if(mysqli_query($conn,$sql)){
         header("location:view-students.php");

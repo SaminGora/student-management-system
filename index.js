@@ -23,12 +23,25 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.5 });
+//menu-btn
+const ul=document.getElementById('ul');
+
+ function show(){
+  if(ul.style.display==="none")
+  ul.style.display="block";
+else
+  ul.style.display="none";
+ }
+
+
+
+
 
 // Watch all counters
 document.querySelectorAll(".counter").forEach(counter => {
   observer.observe(counter);
 });
-//
+//password toggle
   const toggle=document.getElementById('toggle');
   const input=document.getElementById('password');
 
@@ -58,22 +71,4 @@ document.addEventListener("DOMContentLoaded", function() {
         loginContainer.style.display = "none";
         loginError.textContent = "";
     });
-
-    // Validate before submitting
-    // loginForm.addEventListener("submit", function(e) {
-    //     const username = loginForm.username.value.trim();
-    //     const password = loginForm.pass.value.trim();
-
-    //     if (username === "" || password === "") {
-    //         e.preventDefault(); // prevent form submission
-    //         if(username === "" && password === ""){
-    //             loginError.textContent = "Username and password are required";
-    //         } else if(username === ""){
-    //             loginError.textContent = "Username is required";
-    //         } else {
-    //             loginError.textContent = "Password is required";
-    //         }
-    //         loginContainer.style.display = "block"; // keep popup visible
-    //     }
-    // });
 });

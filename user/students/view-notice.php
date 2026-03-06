@@ -1,5 +1,5 @@
 <?php
-include_once('D:\xampp\htdocs\studentmgt\connection.php');
+include_once('C:\xampp\htdocs\studentmgt\connection.php');
 session_start(); 
  // If not logged in → go back to home.php
  if (!isset($_SESSION['student_id'])) {
@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Notice</title>
-    <link rel="stylesheet" href="/studentmgt/user/students/css/view-notice.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
      <link rel="stylesheet" href="/studentmgt/css/bootstrap.min.css">
 </head>
 <body>

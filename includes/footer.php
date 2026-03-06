@@ -21,7 +21,7 @@
     footer{
         display: grid;
         grid-template-rows:1fr;
-        grid-template-columns:repeat(3,2fr);
+        grid-template-columns:repeat(3,3fr);
        
     }
     ul li{
@@ -47,12 +47,16 @@
     .follow h3{
         color: white;
     }
+    .follow i{
+        color:white;
+        padding:8px;
+    }
      #copyright{
         color:white;
         grid-column: 1 / -1;   /* spans all 3 columns */
         text-align: center;
     }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width:480px) {
         footer{
             grid-template-columns:1fr;
             height:auto;
@@ -75,13 +79,17 @@
     </div>
     <div class="follow">
         <h3>Follow Us</h3>
+       <a href="facebook.com"> <i class="bi bi-facebook"></i></a>
+        <a href="twitter.com"><i class="bi bi-twitter-x"></i></a>
+        <a href="whatsapp.com"><i class="bi bi-whatsapp"></i></a>
     </div>
     <div class="menu">
         <ul>
             <h2>Menu</h2>
-            <li>  <a href="about.html">Home</a></li>
-            <li>  <a href="about.html">About</a></li>
-            <li>  <a href="contact.html">Contact</a></li>
+            <li>  <a href="index.php">Home</a></li>
+            <li>  <a href="./admin/login.php">Admin</a></li>
+            <li>  <a href="\studentmgt\user\teachers\login.php">Teacher</a></li>
+            <li>  <a href="contact.php">Contact</a></li>
         </ul>
     </div>
      <p id="copyright">Copyright &copy2025 Himalayan Glory | Developed By Samin. Powered by ABC Enterprise.</p>

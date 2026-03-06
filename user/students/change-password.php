@@ -1,6 +1,15 @@
-<?php
-include_once('../connection.php');
+<?php session_start();
+include_once('../../connection.php');
+session_start(); 
 
+ // If not logged in → go back to home.php
+ if (!isset($_SESSION['student_id'])) {
+ header("Location: ../../index.php");
+     exit();
+ } 
+ $sts_id=$_SESSION['student_id'];
+ $class_id=$_SESSION['class_id'];
+ 
 if (isset($_POST['update-password'])){
     $sql="SELECT password from admin";
     $result=mysqli_query($conn,$sql);
@@ -37,13 +46,12 @@ if (isset($_POST['update-password'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/studentmgt/user/students/css/changepassword.css">
+   <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <title>password</title>
 </head>
 <body>
   <?php include'includes/sidebar.php'?>
        <div class="container">
-    <h2>Change Password</h2>
   <div class="change-password">
     <form method="post">
     <?php

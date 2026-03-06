@@ -1,5 +1,11 @@
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +13,7 @@ include_once('../connection.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Notice</title>
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-notice.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
      <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
 </head>
 <body>
@@ -18,7 +24,7 @@ include_once('../connection.php');
     if(isset($_GET['success'])){?>
         <p class="success"><?php echo $_GET['success'];?></p>
     <?php }?>
-    <table class="table table-striped"  style="border-collapse:collapse;">
+    <table class="table table-striped">
         <tr>
             <th>S.N</th>
             <th>Notice Title</th>

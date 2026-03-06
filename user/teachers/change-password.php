@@ -1,5 +1,5 @@
-<?php
-include_once('../connection.php');
+<?php 
+include_once('../../connection.php');
 
 if (isset($_POST['update-password'])){
     $sql="SELECT password from admin";
@@ -37,13 +37,12 @@ if (isset($_POST['update-password'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/studentmgt/user/teachers/css/changepassword.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <title>password</title>
 </head>
 <body>
   <?php include'includes/sidebar.php'?>
        <div class="container">
-    <h2>Change Password</h2>
   <div class="change-password">
     <form method="post">
     <?php
@@ -85,14 +84,6 @@ if (isset($_POST['update-password'])){
                 icon.classList.toggle('bi-eye-slash');
         });
     });
-
-//     toggle.addEventListener('click', () => {
-//    const isPassword = pass.type === 'password';
-//     pass.type = isPassword ? 'text' : 'password';
-
-//     toggle.classList.toggle('bi-eye');
-//     toggle.classList.toggle('bi-eye-slash');
-//     });
  </script>
 </body>
 </html>

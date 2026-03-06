@@ -12,13 +12,19 @@
     <img src="./images/logo.png" alt="" class="logo">
     </div>
     <div>
-      <ul>
+      <ul id="ul">
             <li>  <a href="index.php">Home</a></li>
             <li>  <a href="contact.php">Contact</a></li>
             <li>  <a href="./admin/login.php">Admin</a></li>
             <li>  <a href="\studentmgt\user\teachers\login.php">Teacher</a></li>
         </ul>
     </div>
-  </nav>
+    <div class="menu-icon">
+
+      <i onclick="show()" class="bi bi-list menu-btn"></i>
+
+    </div>
+    </nav>
+
 </body>
 </html>

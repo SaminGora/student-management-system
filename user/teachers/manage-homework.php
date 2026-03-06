@@ -1,8 +1,22 @@
 <?php
 include '../../connection.php';
+
+
 if(isset($_GET['deleteid'])){
     $id=$_GET['deleteid'];
-    $sql="DELETE * from homework where id=$id";
+    $hw_id=$_GET['deleteid'];
+    $sql = "SELECT file_path FROM homework WHERE id = '$hw_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    
+    if ($row && !empty($row['file_path'])) {
+        $file_path =$row['file_path'];  
+        
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+      }
+    $sql="DELETE from homework where id=$id";
     if(mysqli_query($conn,$sql)){
         header("location:view-homework.php?success=Delete successfully");
     }

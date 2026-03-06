@@ -8,7 +8,7 @@ html, body {
     padding: 0;
     background: linear-gradient(to right, #c8d6d3, #aaafc4); /* or color / image */
 }
-/*view classes */
+
 .table-data h2{
     margin-top: 100px;
     text-align: center;

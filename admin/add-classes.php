@@ -1,11 +1,16 @@
 <?php
 include_once('../connection.php');
-
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 if (isset($_POST['class-add'])){
  
     $class_id = $_POST['class_id'];
     $class_name = $_POST['class_name'] ;
-    $teacher_id = $_POST['teacher_id'];
+    $teacher_id = $_POST['teacher_id']; 
     
   if(empty($class_id)|| empty($class_name)|| empty($teacher_id)){
       header("Location: add-classes.php?error= Please fill all field");
@@ -29,7 +34,8 @@ if (isset($_POST['class-add'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Classes</title>
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-class.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
 </head>
 <body>
   <?php include'includes/sidebar.php'?>
@@ -58,7 +64,7 @@ if (isset($_POST['class-add'])){
           <option value="">-- Select teacher --</option>
         <?php
       include_once("../connection.php");
-      $sql = "SELECT T_id, Name FROM teachers";
+      $sql = "SELECT T_id, Name FROM teachers where Role='class teacher'";
       $result = mysqli_query($conn, $sql);
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<option value='".$row['T_id']."'>".$row['Name']."</option>";

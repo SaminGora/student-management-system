@@ -13,20 +13,33 @@ if(isset($_POST['hw-upload'])){
 
     $file_path = "";
     $target_dir = "uploads/";
+
     if(!empty($_FILES['file']['name'])){
-        $file_path = $target_dir.basename($_FILES["file"]["name"]);
-        move_uploaded_file($_FILES["file"]["tmp_name"], $file_path);
-    }
-    
-   $sql="INSERT Into uploadhomework(sts_id,hwid,file_path)values('$sts_id','$hwid','$file_path')";
-    if(mysqli_query($conn, $sql)){
-            header("Location:homework.php?success=uploaded successfully");
-            exit();
+        $fileName = $_FILES['file']['name'];
+        $allowedTypes = array('png','jpg','jpeg'); 
+        $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if (in_array($fileType, $allowedTypes)) {
+            $file_path = $target_dir . basename($_FILES["file"]["name"]);
+            
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $file_path)) {
+                 $sql="INSERT Into uploadhomework(sts_id,hwid,file_path)values('$sts_id','$hwid','$file_path')";
+                 if(mysqli_query($conn, $sql)){
+                    header("Location:homework.php?success=uploaded successfully");
+                    exit();
            }
-            else {
-             header("Location:homework.php?error= Database error");
+            }else {
+             header("Location:homework.php?error= error");
              exit();
             }
+        }else {
+             header("Location:homework.php?error= only PNG, JPG, JPEG files are allowed");
+             exit();
+            }
+    }else {
+        header("Location:homework.php?error= Please select a file to upload");
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +47,7 @@ if(isset($_POST['hw-upload'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/view-homework.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <link rel="stylesheet" href="/studentmgt/css/bootstrap.min.css">
     <title>view homework</title>
 </head>

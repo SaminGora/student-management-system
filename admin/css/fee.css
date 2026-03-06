@@ -29,8 +29,7 @@ html, body {
     color: black;
 }
 .fee .btn{
-    display: inline-flex;
-    justify-content: center;
+    text-align: center;
     width: 250px;
     height: 80px;
     border-radius:18px;

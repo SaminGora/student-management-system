@@ -20,19 +20,25 @@
             <th>Class</th>
             <th>Roll</th>
             <th>Attendence</th>
+            <th>Date</th>
            
         </tr>
     <?php 
     $class=$_GET['class'];
-    $sql="SELECT * from attendence where class=$class";
+    // JOIN with students table to get current name, roll, class
+    $sql="SELECT attendence.*, students.name, students.roll, students.class_id as class_name 
+          FROM attendence 
+          JOIN students ON attendence.student_id = students.student_id 
+          WHERE students.class_id=$class";
     $result=mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
     while($row=mysqli_fetch_assoc($result)){
           echo '<tr>
           <td>'.$row['name'].'</td>
-          <td>'.$row['class'].'</td>
+          <td>'.$row['class_name'].'</td>
           <td>'.$row['roll'].'</td>
           <td>'.$row['attendence'].'</td>
+          <td>'.$row['date'].'</td>
           </tr>';
 
     }

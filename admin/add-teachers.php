@@ -1,7 +1,15 @@
 <?php
  use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
-
+ require_once __DIR__ . '/vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 require '../vendor/autoload.php';
 include_once('../connection.php');
 
@@ -52,7 +60,7 @@ if (isset($_POST['tadd'])){
             $mail->Host       = 'smtp.gmail.com';    // Gmail SMTP server
             $mail->SMTPAuth   = true;
             $mail->Username   = 'gorasamin6@gmail.com';   // your Gmail
-            $mail->Password   = 'fxgt hzqa dfrt fktv';     // ⚡ Use Gmail App Password, not your real password
+            $mail->Password   = $_ENV['gmail_pass'];       // ⚡ Use Gmail App Password, not your real password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 
@@ -93,7 +101,8 @@ if (isset($_POST['tadd'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Teacher</title>
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-teacher.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
 </head>
 <body>
   <?php include'includes/sidebar.php'?>
@@ -113,25 +122,25 @@ if (isset($_POST['tadd'])){
     <p class="success"><?php echo $_GET['success'];?></p>
   <?php }?>
       <label>Name</label>
-      <input type="text" name="tname"><br>
+      <input type="text" name="tname"  required><br>
        <label>Contact</label>
-      <input type="tel" name="tcontact"><br>
+      <input type="tel" name="tcontact" required><br>
       <label>Email</label>
-      <input type="email" name="temail"><br>
+      <input type="email" name="temail" required><br>
        <label>Subject</label>
-      <input type="text" name="tsubject"><br>
+      <input type="text" name="tsubject" required><br>
        <label>Role</label>
-       <select name="trole">
+       <select name="trole" required>
         <option>class teacher</option>
           <option>subject teacher</option>
        </select>
       <label>Username</label>
-      <input type="text" name="tusername"><br>
+      <input type="text" name="tusername" required><br>
       <label>Password</label>
-      <input type="password" name="tpass"><br>
+      <input type="password" name="tpass" required><br>
        <label>Image</label>
-      <input type="file" name="file"><br>
-      <input type="submit"class="add-btn" value="Add" name="tadd">
+      <input type="file" name="file" required><br>
+      <input type="submit"class="add-btn"style="  background-color: #2980b9;" value="Add" name="tadd">
     </form>
   </div>
  </div>  

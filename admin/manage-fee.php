@@ -1,3 +1,10 @@
+<?php 
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

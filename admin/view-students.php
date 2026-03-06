@@ -1,5 +1,11 @@
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,11 +13,29 @@ include_once('../connection.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Students</title>
+    <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
     <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
-     <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
 </head>
 <body>
-  <?php include'includes/sidebar.php'?>
+  <?php include 'includes/sidebar.php';
+// Number of records per page
+$limit =5;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) {
+    $page = 1;
+}
+// Calculate the starting record
+$start = ($page - 1) * $limit;
+// Fetch total records
+$result_count = mysqli_query($conn, "SELECT COUNT(*) AS total FROM students");
+$row_count = mysqli_fetch_assoc($result_count);
+$total_records = $row_count['total'];
+
+// Calculate total pages
+$total_pages = ceil($total_records / $limit);
+
+  ?>
+  
   <div class="table-data">
     <h2>Students</h2>
     <form method="post">
@@ -19,6 +43,7 @@ include_once('../connection.php');
   <input type="number" placeholder="e.g 1" name="search">
   <input type="submit" name="find" value="Find">
 </form>
+<div class="table">
     <table class="table table-striped" >
         
         <tr>
@@ -40,7 +65,7 @@ include_once('../connection.php');
       if(isset($_POST['find'])){
       $var = trim($_POST['search']);
       $sql=
-      "SELECT student_id, name,class_id,roll,gender,email,parent_name,contact,admission_date from students where class_id=$var";
+      "SELECT student_id, name,class_id,roll,gender,email,parent_name,contact,admission_date from students where class_id=$var LIMIT $start, $limit";
       $records=mysqli_query($conn,$sql);
       $serial=1;
         while ($row = mysqli_fetch_assoc($records)) {
@@ -64,7 +89,7 @@ include_once('../connection.php');
         </tr>';
         }
       }else{
-        $sql="SELECT student_id, name,class_id,roll,gender,email,parent_name,contact,admission_date from students";
+      $sql="SELECT student_id, name,class_id,roll,gender,email,parent_name,contact,admission_date from students LIMIT $start, $limit";
       $records=mysqli_query($conn,$sql);
       $serial=1;
         while ($row = mysqli_fetch_assoc($records)) {
@@ -90,8 +115,21 @@ include_once('../connection.php');
         }
       }
         ?>
+        </div>
     </table>
+    
     </div>
-
+<div class="pagination">
+  <?php
+    if ($page > 1) {
+        echo '<a href="?page=1">First ></a>';
+        echo '<a href="?page='.($page - 1).'">Prev ></a>';
+    }
+    if ($page < $total_pages) {
+        echo '<a href="?page='.($page + 1).'">Next ></a>';
+        echo '<a href="?page='.$total_pages.'">Last</a>';
+    }
+  ?>
+</div>
 </body>
 </html>
