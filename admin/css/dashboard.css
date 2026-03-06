@@ -1,113 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.content{
-    margin-top:120px;
-    margin-left:350px ;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-   
+:root {
+    --primary: #2c3e50;
+    --secondary: #34495e;
+    --accent: #3498db;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+    --danger: #e74c3c;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
-/* link boxes */
-.content .total-class,.total-students,.total-teachers,.total-notice{
-    text-align: center;
-    width: 210px;
-    height: 110px;
-    border-radius: 15px;
-    padding: 6px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-.content a{
+
+body {
+    background-color: #f4f6f9;
+}
+
+.content {
+    margin-top: 80px;
+    margin-left: 280px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Dashboard Cards */
+.total-class,
+.total-students,
+.total-teachers,
+.total-notice {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    height: 100%;
+}
+
+.total-class:hover,
+.total-students:hover,
+.total-teachers:hover,
+.total-notice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+/* 
+.total-class::before {
+    background: var(--danger);
+}
+
+.total-students::before {
+    background: var(--danger);
+}
+
+.total-teachers::before {
+    background: var(--success);
+}
+
+.total-notice::before {
+    background: var(--accent);
+} */
+
+/* Colored strip */
+.total-class,
+.total-students,
+.total-teachers,
+.total-notice {
+    border-left: 5px solid;
+}
+
+.total-class {
+    border-color: var(--warning);
+}
+
+.total-students {
+    border-color: var(--danger);
+}
+
+.total-teachers {
+    border-color: var(--success);
+}
+
+.total-notice {
+    border-color: var(--accent);
+}
+
+.content h6 {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.count-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+}
+
+.content a {
     text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
-.content  a:hover{
-    color: rgb(218, 101, 101);
-    text-decoration:underline;
-}
-.count-value{
-    font-size:18px;
-    font-weight: bold;
-    color: rgb(67, 54, 54);
-    text-align: left;
 
+.content a:hover {
+    color: var(--accent);
 }
-.total-class{
-background-color: rgb(199, 187, 170);
-display: flex;
-justify-content: space-around;
-align-items: center;
-}
-.class-icon{
-    background-color: rgb(93, 195, 93);
-    width:45px;
-    height: 45px;
-    font-size: 25px;
+
+.class-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     color: white;
 }
-.total-students{
-    background-color: rgb(190, 146, 146);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.total-class .class-icon {
+    background-color: rgba(241, 196, 15, 0.2);
+    color: var(--warning);
 }
-.total-teachers{
-    background-color: rgb(134, 209, 140);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.total-students .class-icon {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--danger);
 }
-.total-notice{
-    background-color: rgb(109, 161, 204);
-     display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.total-teachers .class-icon {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.total-notice .class-icon {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: var(--accent);
+}
+
+/* Quick Actions */
+.quick-link {
+    margin-left: 280px;
+    padding: 2rem;
 }
 
 .quick-link h2 {
-    grid-column: span 4;
-}
-.quick-link{
-    margin-top:20px;
-    margin-left:350px ;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap: 5px;
-}
-.quick-link a{
-    text-decoration: none;
-    color: blue;
-}
-.quick-link a:hover{
-    color: rgb(218, 101, 101);
-    text-decoration:underline;
-}
-.add-students,.add-class,.add-teachers{
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
     text-align: center;
-    width:200px;
-    height:90px;
-    border-radius: 15px;
+    /* Center header */
 }
-.add-students{
-    padding: 35px 0;
-    background-color: rgb(118, 243, 249);
+
+.quick-link-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    /* Center buttons */
+    justify-content: center;
+    gap: 1.5rem;
 }
-.add-class{
-    padding: 35px 0;
-    background-color: rgba(149, 162, 70, 0.682);
+
+.add-students,
+.add-class,
+.add-teachers {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
 }
-.add-teachers{
-    padding: 35px 0;
-    background-color: rgb(91, 88, 106);
+
+.add-students:hover,
+.add-class:hover,
+.add-teachers:hover {
+    transform: translateY(-5px);
 }
-@media only screen and (max-width: 600px){
-    .content{
-        grid-template-columns: 1fr 1fr;
-         margin-top:120px;
-         margin-left: 50px;
-    }
+
+.quick-link-container a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.add-students {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.add-class {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+}
+
+.add-teachers {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.add-students a,
+.add-class a,
+.add-teachers a {
+    color: var(--primary);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+
+    .content,
     .quick-link {
-    margin-left: 50px;
-    grid-template-columns: 1fr 1fr;
-  }
-  .quick-link h2 {
-    grid-column: span 2;
-  }
+        margin-left: 0;
+    }
 }

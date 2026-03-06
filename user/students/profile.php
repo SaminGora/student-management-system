@@ -15,7 +15,7 @@ $id=$_SESSION['student_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/studentmgt/user/students/css/profile.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <title>Profile</title>
 </head>
 <body>
@@ -40,7 +40,7 @@ $id=$_SESSION['student_id'];
     $username=$row['username'];
     
     ?>
-          <table   class="table table-bordered">
+          <table   class="table table-striped">
         <tr>
             <th>Name</th> <?php echo'<td>'.$name.'</td>' ?> <th>Class</th> <?php echo'<td>'.$class.'</td>' ?>
         </tr>

@@ -1,21 +1,13 @@
 <?php
 include_once('../../connection.php');
 
-session_start();
-
-// If not logged in → go back to home.php
-if (!isset($_SESSION['teacher_id'])) {
-    header("Location:login.php");
-    exit();
-}
-$id=$_SESSION['teacher_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/studentmgt/user/students/css/profile.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <title>Profile</title>
 </head>
 <body>
@@ -33,7 +25,7 @@ $id=$_SESSION['teacher_id'];
     $username=$row['username'];
     
     ?>
-          <table   class="table table-bordered">
+          <table  class="table table-striped">
         <tr>
             <th>Name</th> <?php echo'<td>'.$name.'</td>' ?>
         </tr>

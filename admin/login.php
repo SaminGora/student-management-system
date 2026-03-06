@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
         <div class="box">
           <h1>Login</h1>
             <?php 
-            session_start();
+            
               if(isset($_SESSION['error'])){
                 echo ' <p class="error">'.$_SESSION['error'].'</p>';
                 unset($_SESSION['error']);
@@ -22,11 +23,26 @@
               <label>Username</label><br><i class="bi bi-person-circle"></i>
               <input type="text" name="username">
               <br>
-              <label>Password</label><br><i class="bi bi-lock-fill"></i>
-              <input type="password" name="pass"><br>
+              <label>Password</label><br><i id="toggle" class="bi bi-eye icon"></i>
+              <input type="password" id="password" name="pass"><br>
               <input type="submit" value="Login" name="signup" class="btn"><br>
           </form>
         </div>
       </div>
+<script>
+  //password toggle
+  const toggle=document.getElementById('toggle');
+  const input=document.getElementById('password');
+
+  toggle.addEventListener('click',function(){
+    if(input.type==='password'){
+    input.type='text';
+    toggle.classList.replace('bi-eye','bi-eye-slash');
+     }else{
+    input.type='password';
+    toggle.classList.replace('bi-eye-slash','bi-eye');
+     }
+  });
+</script>
 </body>
 </html>

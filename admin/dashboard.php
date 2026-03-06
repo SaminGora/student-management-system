@@ -21,7 +21,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 <body>
   <?php include'includes/sidebar.php'?>
-  <div class="main">
+<div class="main">
   <div class="content">
       <div class="total-class">
         <!-- total classes -->
@@ -95,21 +95,28 @@ if (!isset($_SESSION['admin_id'])) {
           <i class="bi bi-bell"></i>
           </div>
      </div>
-</div>
+     
+ </div>
 
-  <div class="quick-link">
+ <div class="quick-link">
    <h2>Quick Action</h2>
-   <div class="add-students">
-      <a href="add-students.php">Add Students </a>
-    </div>
-     <div class="add-class">
-      <a href="add-class.php">Add Class</a>
-    </div>
+   <div class="quick-link-container">
      <div class="add-teachers">
-      <a href="add-teachers.php">Add Teachers</a>
+       <a href="add-exam.php">Add Exams</a>
+      </div>
+    <div class="add-students">
+       <a href="add-students.php">Add Students </a>
      </div>
+      <div class="add-class">
+       <a href="add-classes.php">Add Class</a>
+     </div>
+      <div class="add-teachers">
+       <a href="add-teachers.php">Add Teachers</a>
+      </div>
+     
+   </div>
   </div>
-</div>
+
 
 </body>
 </html>

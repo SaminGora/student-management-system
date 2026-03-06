@@ -1,9 +1,17 @@
 <?php
  use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
+  require_once __DIR__ . '/vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 require '../vendor/autoload.php';
 include_once('../connection.php');
-
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 if (isset($_POST['add-notice'])){
     $notice_title = $_POST['notice_title'] ;
     $notice_msg = $_POST['notice_msg'] ;
@@ -37,7 +45,7 @@ if (isset($_POST['add-notice'])){
             $mail->Host       = 'smtp.gmail.com';    // Gmail SMTP server
             $mail->SMTPAuth   = true;
             $mail->Username   = 'gorasamin6@gmail.com';   // your Gmail
-            $mail->Password   =      // ⚡ Use Gmail App Password, not your real password
+            $mail->Password   = $_ENV['gmail_pass'];     // ⚡ Use Gmail App Password, not your real password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 
@@ -78,7 +86,7 @@ if (isset($_POST['add-notice'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-notice.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <title>Notice</title>
 </head>
 <body>

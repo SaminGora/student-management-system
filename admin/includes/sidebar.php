@@ -29,11 +29,11 @@ $id=1;
     <i class="bi bi-list" id="menu-icon" ></i>
     <h3>Welcome to admin dashboard!</h3>
     <div >
-    <img id="profile" class="profile-img"src="../images/Principal.jpg"><strong><?php echo $name ?> </strong>
+    <img id="profile" class="profile-img" src="<?php echo "$img"?>"><strong ><?php echo $name ?> </strong>
     </div>
   </div>
     <div class="dropdown" id="dropdown-block">
-        <img class="profile-img" src="../images/Principal.jpg">
+        <img class="profile-img" src="<?php echo "$img"?>">
         <p><?php echo $name ?><br><?php echo $email?></p>
         <ul>
         <li><i class="bi bi-person-bounding-box"></i><a href="profile.php">My profile</a></li>
@@ -53,8 +53,8 @@ $id=1;
   </div>
   </div>
  
-  <div class="profile">
-     <i class="bi bi-person"id="profile-icon"></i>Admin
+  <div >
+    <img id="profile" class="profile-img" src="<?php echo "$img"?>"><strong ><?php echo $name ?> </strong>
  </div>
 <hr>
 
@@ -76,7 +76,8 @@ $id=1;
         <li><a href="add-students.php">Add Student</a></li>
         <li><a href="view-students.php">Manage Student</a></li>
       </ul>
-    <li><a href="notice.php">Result</a><i class="bi bi-bell-fill"></i></li>
+    <li><a href="add-result.php">Result</a><i class="bi bi-bell-fill"></i></li>
+    
 
     <li id="fee">
       <a href="">Fee</a><i class="bi bi-people"></i></li>
@@ -87,13 +88,16 @@ $id=1;
 
      
     <li id="notice">
-      <a href="">Notice</a><i class="bi bi-file-earmark-person-fill"></i>
+      <a href="">Notice</a><i class="bi bi-bell"></i>
       </li>
       <ul id="notice-toggle" style="display:none;">
         <li><a href="../admin/add-notice.php">Add notice</a></li>
         <li><a href="view-notice.php">Manage </a></li>
       </ul>
-  </ul>
+      <li><a href="view-result.php">View Result</a><i class="bi bi-bell-fill"></i></li>
+       <li><a href="view-contacepage.php">Contact page </a><i class="bi bi-person-lines-fill"></i>
+       <li><a href="search-students.php">Search</a><i class="bi bi-search"></i>
+  </ul></li>
   
   </div>
 </aside>

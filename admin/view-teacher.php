@@ -1,5 +1,11 @@
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +13,8 @@ include_once('../connection.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Teachers</title>
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-teacher.css">
-     <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
 </head>
 <body>
   <?php include'includes/sidebar.php'?>

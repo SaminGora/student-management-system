@@ -12,7 +12,7 @@ $classid=$_SESSION['class_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/view-homework.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <link rel="stylesheet" href="/studentmgt/css/bootstrap.min.css">
     <title>view homework</title></title>
 </head>
@@ -20,7 +20,7 @@ $classid=$_SESSION['class_id'];
     <?php include 'includes/sidebar.php'?>
     <div class="table-data">
         <h2>Homeworks</h2>
-         <table  class="table table-bordered table-dark">
+         <table  class="table table-striped">
         <tr>
             <th>S.N</th>
             <th>Title</th>

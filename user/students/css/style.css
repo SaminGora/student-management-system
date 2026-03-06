@@ -1,9 +1,10 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
     box-sizing: 0px;
-    
+
 }
+
 header {
     background-color: aliceblue;
     height: 5em;
@@ -13,7 +14,9 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
 }
+
 header .head {
     padding: 15px;
     display: flex;
@@ -22,153 +25,199 @@ header .head {
     text-align: center;
 }
 
-header h3{
+header h3 {
     margin-left: 300px;
 }
-header #menu-icon{
+
+header #menu-icon {
     display: none;
-    font-size:45px;
+    font-size: 45px;
 }
-header .profile-img{
+
+header .profile-img {
     border-radius: 50%;
     width: 45px;
     height: 40px;
-    margin-right:0.5em;
+    margin-right: 0.5em;
     position: relative;
 }
-.dropdown{
-  display:none;
-  position: absolute;
-  top:5px;        
-  right: 0;  
-  left:76em;     
-  width:280px;
-  height: auto;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-  z-index: 1;
-} 
-.dropdown::before{
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 76em;
+    width: 280px;
+    height: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.dropdown::before {
     content: '';
     height: 15px;
     width: 15px;
-    position:absolute;
+    position: absolute;
     transform: rotate(45deg);
     top: -0.5em;
-    left:15em;
+    left: 15em;
     background-color: white;
 }
-.dropdown .profile-img{
-    top:1em;
-    height:200px;
+
+.dropdown .profile-img {
+    top: 1em;
+    height: 200px;
     width: 200px;
-   margin-left: 2.5em;
+    margin-left: 2.5em;
 }
-.dropdown p{
+
+.dropdown p {
     margin-top: 20px;
     text-align: center;
 }
-.dropdown .bi{
+
+.dropdown .bi {
     color: red;
     font-size: large;
 }
-.dropdown ul li{
+
+.dropdown ul li {
     margin: 5px 0;
     width: 100%;
 }
-.dropdown ul li a{
-    display:block;
+
+.dropdown ul li a {
+    display: block;
     text-decoration: none;
     color: rgb(29, 29, 29);
     padding: 10px 15px;
     width: 100%;
 }
-.dropdown ul li:hover{
- background-color: #ccc;
+
+.dropdown ul li:hover {
+    background-color: #ccc;
 }
-aside{
-    background-color: rgb(42, 31, 85);
+
+aside .profile-img {
+    border-radius: 50%;
+    width: 45px;
+    height: 40px;
+    margin-left: 2em;
+}
+
+aside {
+    background-color: rgb(34, 38, 59);
     top: 0px;
     left: 0px;
-    width:250px;
-    height:100%;
-    position:fixed;
-    color:white;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    color: white;
     display: block;
-    z-index: 1000;
-    transition:left 0.3s ease;
-    
+    transition: left 0.3s ease;
+    z-index: 1002;
 }
-aside .head{
+
+aside .head {
     display: flex;
     justify-content: space-between;
 }
-aside .logo{
+
+aside .logo {
     width: 55px;
     height: 50px;
 }
-aside .bi-person{
-    font-size:35px;
-    margin:18px;
-}
-.sidebar-link .bi{
+
+
+.sidebar-link .bi {
     font-size: 18px;
 }
-li{
+
+li {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-/* .sidebar-link ul li.active a,
-.sidebar-link ul li.active i {
-  background: #007bff; 
-  color: #67f25b;       
-  border-radius: 5px;
-} */
-aside #cross-icon{
+
+
+aside #cross-icon {
     display: none;
+
 }
-@media only screen and (max-width: 600px){
-    
-    header h3{
-        font-size:15px ;
-        margin-left: -135px;
+
+@media only screen and (max-width:360px) {
+    .head h3 {
+        font-size: 15px;
+        margin-left: -10px;
     }
-    aside{
+
+    .head strong {
+        display: block;
+        font-size: 8px;
+    }
+
+    @media only screen and (max-width: 350px) {
+        .dropdown {
+            position: absolute;
+            width: 280px;
+            left: 50%;
+            transform: translateX(-55%);
+            top: -5px;
+            z-index: 1001;
+        }
+    }
+}
+
+@media only screen and (max-width:700px) {
+    header h3 {
+        font-size: 16px;
+        margin-left: -10px;
+    }
+
+    aside {
         display: none;
     }
-   aside #cross-icon{
+
+    aside #cross-icon {
         display: block;
-        margin: 5px;
+
     }
-    header #menu-icon{
-    display:block;
-     }
-      .dropdown{
+
+    header #menu-icon {
+        display: block;
+        font-size: 30px;
+    }
+
+    .dropdown {
         top: -5px;
-        left: 12.5em;
-        z-index: 1;
+        left: 15.5em;
+        z-index: 1001;
     }
 }
-aside ul{
+
+aside ul {
     list-style: none;
     text-decoration: none;
-    margin-top:auto;
+    margin-top: auto;
 }
-aside ul li{
+
+aside ul li {
     padding: 15px;
 }
 
-aside ul a{
+aside ul a {
     text-decoration: none;
     color: white;
     font-size: 15px;
 }
-aside ul li:hover{
-    background-color:rgb(55, 63, 105) ;
+
+aside ul li:hover {
+    background-color: rgb(55, 63, 105);
 }
-aside ul li:focus{
-    background-color:rgb(55, 63, 105) ;
-}
+/* aside li.active {
+    background-color: rgb(55, 86, 105);
+} */

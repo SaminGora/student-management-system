@@ -1,5 +1,5 @@
 <?php
-include_once('D:\xampp\htdocs\studentmgt\connection.php');
+include_once('C:\xampp\htdocs\studentmgt\connection.php');
 
 session_start(); 
 
@@ -17,22 +17,28 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Attendence</title>
     <link rel="stylesheet" href="/studentmgt/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="attendence.css">
+    <link rel="stylesheet" href="css/attendence.css">
 </head>
-
+<?php include'includes/sidebar.php'?>
 <body>
-    <div class="container">
-    <h2>View Attendence</h2>
+    <div class="table-data">
+        <div class="detail">
     <?php 
      $present = $conn->query("SELECT COUNT(*) AS total FROM attendence WHERE student_id = '$sts_id' AND attendence = 'present'")->fetch_assoc()['total'];
      $absent = $conn->query("SELECT COUNT(*) AS total FROM attendence WHERE student_id = '$sts_id' AND attendence = 'absent'")->fetch_assoc()['total'];
 
      $total = $present + $absent;
     $percentage = $total > 0 ? round(($present / $total) * 100, 2) : 0;
-    ?>
-    <p>Present Days: <?php echo $present?></p>
-    <p>Absent Days: <?php echo $absent?></p>
-
+    ?><div>
+    <p style="color:green">Present Days: <?php echo $present?></p>
+    <p style="color:red">Absent Days: <?php echo $absent?></p>
+    <p style="color:blue">Percentage: <?php echo $percentage ."%"?></p>
+    </div>
+            <div>
+            <h2>View Attendence</h2>
+            </div>
+   
+   </div>
     <table class="table">
         <tr>
             <th>Name</th>
@@ -43,13 +49,16 @@ session_start();
            
         </tr>
     <?php 
-    $sql="SELECT * from attendence where student_id=$sts_id";
+    $sql="SELECT attendence.*, students.name, students.roll, students.class_id as class_name
+          FROM attendence 
+          JOIN students ON attendence.student_id = students.student_id
+          WHERE attendence.student_id=$sts_id";
     $result=mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
     while($row=mysqli_fetch_assoc($result)){
           echo '<tr>
           <td>'.$row['name'].'</td>
-          <td>'.$row['class'].'</td>
+          <td>'.$row['class_name'].'</td>
           <td>'.$row['roll'].'</td>
           <td>'.$row['attendence'].'</td>
           <td>'.$row['date'].'</td>

@@ -1,5 +1,11 @@
 <?php
 include_once('../connection.php');
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 $class=$_GET['class'];
 if(isset($_POST['add-fee'])) {
     $student_id = $_POST['student_id'];
@@ -41,7 +47,8 @@ if(isset($_POST['add-fee'])) {
 <body>
     <?php include'includes/sidebar.php';?>
     <div class="container">
-    <h2>Add Students</h2>
+    <div class="background">
+    <h2>Add Fee</h2>
     <form method="POST">
          <?php
     if(isset($_GET['error'])){?>
@@ -75,6 +82,7 @@ if(isset($_POST['add-fee'])) {
 
   <input type="submit" name="add-fee" value="Add Fee" class="btn btn-primary">
 </form>
+</div>
 </div>
 </body>
 </html>

@@ -59,7 +59,7 @@ $id=$_SESSION['teacher_id'];
   </div>
   </div>
   <div class="profile">
-     <i class="bi bi-person"id="profile-icon"></i>teacher
+    <img class="profile-img" src="<?php echo "$img"?>"><strong><?php echo $name ?> </strong>
  </div>
  <hr>
 
@@ -67,12 +67,13 @@ $id=$_SESSION['teacher_id'];
   <ul>
   <li><a href="dashboard.php">Dashboard</a><i class="bi bi-pc-display-horizontal"></i></li>
        <li id="homework">
-        <a href="">Homework</a><i class="bi bi-bell-fill"></i></li>
+        <a href="">Homework</a><i class="bi bi-house-add"></i></i></li>
        <ul id="homework-toggle" style="display:none;">
-         <li><a href="add-homework.php">Add Homework</a><i class="bi bi-bell-fill"></i></li>
-         <li><a href="view-homework.php">Manage Homework</a><i class="bi bi-bell-fill"></i></li>
+         <li><a href="add-homework.php">Add Homework</a></i></li>
+         <li><a href="view-homework.php">Manage Homework</a></li>
          </ul>
-        <li><a href="attendence.php">Attendence</a><i class="bi bi-bell-fill"></i></li>
+        <li><a href="attendence.php">Attendence</a><i class="bi bi-box-arrow-up-right"></i></li>
+        <li><a href="notes.php">Add notes</a><i class="bi bi-file-earmark-ppt-fill"></i></li>
   </ul>
   
   </div>

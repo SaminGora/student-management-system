@@ -7,7 +7,7 @@ include_once("../../connection.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/add-homework.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <link rel="stylesheet" href="/studentmgt/css/bootstrap.min.css">
     <title>view homework</title></title>
 </head>
@@ -21,7 +21,8 @@ include_once("../../connection.php");
        <?php if(isset($_GET['success'])){?>
             <p class="success"><?php echo $_GET['success'];?></p>
        <?php }?>
-        <table  class="table table-bordered table-dark">
+       <div class="table">
+        <table  class="table table-bordered">
         <tr>
             <th>S.N</th>
             <th>Title</th>
@@ -60,6 +61,7 @@ include_once("../../connection.php");
         }
         ?>
         </table>
+        </div>
     </div>
 </body>
 </html>

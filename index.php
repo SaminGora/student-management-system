@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,20 +17,18 @@
         <div class="box">
           <i class="bi bi-x-square close-icon"></i>
           <h1>Login</h1>
-              <p class="error" id="loginError" style="color:red;">
-                <?php 
-                if(isset($_SESSION['error'])){
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                } 
-                ?>
-                </p> 
+              <?php  
+              if(isset($_SESSION['error'])){
+                  echo '<p class="error" id="loginError" style="color:red;">' . $_SESSION['error'] . '</p>';
+                  unset($_SESSION['error']);
+              } 
+              ?>
            
           <form id="loginForm" method="POST" action="sts-authentication.php">
-              <label>Username</label><br><i class="bi bi-person-circle"></i>
+              <label>Username</label><br><i class="bi bi-person-circle icon"></i>
               <input type="text" name="username">
               <br>
-              <label>Password</label><br> <i id="toggle" class="bi bi-eye"></i>
+              <label>Password</label><br> <i id="toggle" class="bi bi-eye icon"></i>
               <input type="password" id="password" name="pass"><br>
               <input type="submit" value="Login" name="signup" class="btn"><br>
           </form>

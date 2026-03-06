@@ -1,7 +1,28 @@
 <?php
+session_start();
 include_once("../../connection.php");
-$class=$_GET['class'];
+
+$class = (int)$_GET['class'];
+$teacher_id = $_SESSION['teacher_id'];
+$role = $_SESSION['role'];
+
+// Role check first
+if ($role !== "class teacher") {
+    echo "<script>alert('Access Denied! Only class teachers can access.'); window.location.href='attendence.php';</script>";
+    exit;
+}
+
+// Check if this teacher is class teacher of this class
+$sql = "SELECT 1 FROM classes WHERE class_id =$class AND teacher_id = $teacher_id";
+$result=mysqli_query($conn,$sql);
+
+if ($result->num_rows === 0) {
+    echo "<script>alert('Access Denied! You are not assigned to this class.'); window.location.href='attendence.php';</script>";
+    exit;
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +50,7 @@ $class=$_GET['class'];
    </tr>
 
    <?php
-   $sql="SELECT * FROM students where class_id=$class";
+   $sql="SELECT * FROM students where class_id=$class order by roll asc";
    $result=$conn->query($sql);
    while($row=$result->fetch_assoc()){
     
@@ -40,9 +61,9 @@ $class=$_GET['class'];
     <td><?php echo $row['contact'];?></td>
     <td>
     Present
-    <input type="radio" required name="attendence[<?php echo $row['roll'];?>]" value="present">
+    <input type="radio" required name="attendence[<?php echo $row['student_id'];?>]" value="present">
     Absent
-    <input type="radio" required name="attendence[<?php echo $row['roll'];?>]" value="absent">
+    <input type="radio" required name="attendence[<?php echo $row['student_id'];?>]" value="absent">
 
     </td>
    </tr>
@@ -57,40 +78,26 @@ $class=$_GET['class'];
 if($_SERVER['REQUEST_METHOD']=='POST'&& isset($_POST['submit'])){
     $date=date('Y-m-d');
     $att=$_POST['attendence'];
-    $sql="SELECT distinct date FROM attendence";
-    $result=$conn->query($sql);
-     $b=false;
-    if($result->num_rows>0){
-       while($row=$result->fetch_assoc()){
-        if($date==$row['date']){
-            $b=true;
-            echo"<script>alert('already attendend');</script>";
-        }
-       }
-    }
-   
-    if(!$b){
-        foreach($att as $roll => $value){
-            // Get name from class11 table
-            $result = $conn->query("SELECT student_id,name FROM students WHERE roll = '$roll'");
-            $row = $result->fetch_assoc();
-            $name = $row['name'];
-            $sts_id=$row['student_id'];
-            if($value=="present"){
-                $sql="INSERT INTO attendence(student_id,name,roll,class,attendence,date)VALUES('$sts_id','$name','$roll','$class','present','$date')";
-                $insertresult=$conn->query($sql);
-            }
+    
+    
+    $success = false;
+    foreach($att as $student_id => $value){
+        // Check if this student already has attendance for today
+        $check_sql = "SELECT attendence_id FROM attendence WHERE student_id = '$student_id' AND date = '$date'";
+        $check_result = $conn->query($check_sql);
         
-            else
-                {              
-                $sql="INSERT INTO attendence(student_id,name,roll,class,attendence,date)VALUES('
-                $sts_id','$name','$roll','$class','absent','$date')";
-                $insertresult=$conn->query($sql);
+        if($check_result->num_rows == 0){
+             $sql="INSERT INTO attendence(student_id, attendence, date) VALUES('$student_id', '$value', '$date')";
+             if($conn->query($sql)){
+                 $success = true;
+             }
         }
-           }
-        if($insertresult){
-           echo"<script>alert('succesfully attendend');</script>"; 
-        }
+    }
+    
+    if($success){
+        echo"<script>alert('Attendance recorded successfully!');</script>"; 
+    } else {
+        echo"<script>alert('Attendance already recorded for selected students today.');</script>";
     }
 }
 ?>

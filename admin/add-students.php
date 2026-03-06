@@ -1,8 +1,16 @@
 <?php
  use PHPMailer\PHPMailer\PHPMailer;
  use PHPMailer\PHPMailer\Exception;
+ require_once __DIR__ . '/vendor/autoload.php';
+ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 require '../vendor/autoload.php';
-
+session_start();
+// If not logged in → go back to home.php
+if (!isset($_SESSION['admin_id'])) {
+    header("Location:login.php");
+    exit();
+}
 include_once('../connection.php');
 if (isset($_POST['sts-add'])) {
 $name           = mysqli_real_escape_string($conn, $_POST['sts-name']);
@@ -30,7 +38,7 @@ $parentemail    = mysqli_real_escape_string($conn, $_POST['parent-email']);
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $new_roll = $row['last_roll'] + 1;
-
+    $date=date('Y-m-d');
       if( empty($name)|| empty($class_id)||empty($address)|| empty($gender)|| empty($dob)|| empty($email)|| empty($username) || empty($password)|| empty($parentname)|| empty($parentcontact) || empty($parentemail) ){
       header("Location: add-students.php?error= Please fill all field");
         exit();
@@ -47,9 +55,13 @@ $parentemail    = mysqli_real_escape_string($conn, $_POST['parent-email']);
         header("Location: add-students.php?error=Invalid parent's email format");
         exit();
       }
-    if(strlen($password) < 6){
+       if (strtotime($dob) > strtotime($date)){
+        header("Location: add-students.php?error=Invalid date of birth");
+        exit();
+    if(strlen($password) < 4){
         header("Location: add-students.php?error=Password must be at least 6 characters long");
         exit();
+    }
     }
     // Insert new student with auto roll
     $sql = "INSERT INTO students 
@@ -66,7 +78,11 @@ $parentemail    = mysqli_real_escape_string($conn, $_POST['parent-email']);
             $mail->Host       = 'smtp.gmail.com';    // Gmail SMTP server
             $mail->SMTPAuth   = true;
             $mail->Username   = 'gorasamin6@gmail.com';   // your Gmail
+<<<<<<< HEAD
             $mail->Password   =      // ⚡ Use Gmail App Password, not your real password
+=======
+            $mail->Password   = $_ENV['gmail_pass'];     // ⚡ Use Gmail App Password, not your real password
+>>>>>>> e0fe5e9 (updating env file)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 
@@ -107,8 +123,8 @@ $parentemail    = mysqli_real_escape_string($conn, $_POST['parent-email']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Students</title>
-    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
     <link rel="stylesheet" href="/studentmgt/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/studentmgt/admin/css/add-students.css">
 </head>
 <body>
   <?php include'includes/sidebar.php'?>
@@ -163,7 +179,7 @@ $parentemail    = mysqli_real_escape_string($conn, $_POST['parent-email']);
       <label>Password</label>
       <input type="password" name="sts-pass"><br>
       <label>Image</label>
-      <input type="file" name="file"><br>
+      <input type="file" name="file" required><br>
       </div>
       <div>
        <h4>Parent details</h4><br>

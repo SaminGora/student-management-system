@@ -1,8 +1,8 @@
 const profile=document.getElementById('profile');
 const dropdown=document.getElementById('dropdown-block');
   
-profile.addEventListener('click',function(){
-    if (dropdown.style.display ==="block") {
+profile.addEventListener('click', function () {
+    if (dropdown.style.display === "block") {
         dropdown.style.display = "none";
     } else {
         dropdown.style.display = "block";
@@ -72,4 +72,5 @@ cross.addEventListener('click', function () {
 menu.addEventListener('click', function () {
      sidebar.style.display="block";
 });
+
 

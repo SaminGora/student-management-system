@@ -1,477 +1,525 @@
-*{
-    padding:0;
-    box-sizing: border-box;
-    margin:0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-color: #333;
+    --light-bg: #f4f6f7;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
 }
-/* login section */
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+/* Navigation */
+nav {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+nav .logo {
+    width: 60px; /* Adjusted size */
+    height: auto;
+}
+
+nav h1 { /* Assuming logo might be text or next to img */
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+nav #ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--transition);
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav .menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+/* Background / Hero Section */
+.main {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/background.jpg');
+    width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 2rem;
+}
+
+.background h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.background p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.background button {
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--white);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.background button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Login Modal */
+.containers {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+}
+
 .close-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #070000;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: var(--transition);
 }
 
 .close-icon:hover {
-  color: red; /* hover effect */
+    color: #e74c3c;
 }
-.containers{
-  display: none;
-    background:transparent;
-    backdrop-filter: blur(18px);
-    width: 350px;
-    margin:15em auto;
+.icon{
+    margin-left: 19em;
+    margin-top:0.5em;
     position: absolute;
-    padding: 25px;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    border-radius: 30px;
-    box-shadow: 0 20px 35px rgb(0, 0, 1);
 }
+
 .box h1 {
     text-align: center;
-    font-family: cursive;
-    font-size: 20px;
-    padding: 18px 0;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
 }
-input {
-    border: none;
+
+.box form label {
+    font-weight: 500;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: var(--radius);
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.box input:focus {
+    border-color: var(--accent-color);
+    background: var(--white);
     outline: none;
-    width: 100%;
-    background: transparent;
-    border-bottom: 2px solid black;
 }
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* removes blue bg */
-  -webkit-text-fill-color: rgb(5, 5, 5) !important; /* keeps text white */
-  transition: background-color 9999s ease-in-out 0s; /* hack to delay bg repaint */
-}
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: rgb(0, 0, 0) !important;
-}
-i {
-    position: absolute;
-    margin-left:280px;
-}
+
 .btn {
-    background-color: rgb(8, 54, 194);
+    background-color: var(--accent-color);
+    color: var(--white);
     border: none;
-    border-radius:25px;
-    padding:10px ;
-    margin:15px 0px;
-}
-.btn:hover{
-    background-color: rgb(80, 153, 243);
-}
-.error{
-    background-color: rgb(210, 123, 123);
-}
-/* login section */
-nav .logo{
-  width:8em ;
-  height:5em;
-}
-nav{
-  background-color: #366ba9b7;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position:absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-nav ul{
-   display: flex;
-   gap: 2em;
-}
-ul li{
-        list-style: none;
-    }
-    ul h2{
-        color: antiquewhite;
-        font-size: 2em;
-    }
-    ul li a{
-        text-decoration: none;
-        color: white;
-        font-size: 2em;
-        position: relative;
-    }
-    nav ul li a::after {
-    content: "";             /* Required for pseudo-element */
-    position: absolute;
-    left: 0;
-    bottom: 0;               /* Position underline at the bottom */
-    width: 0;
-    height:2px;             /* Thickness of underline */
-    background: red;         /* Underline color */
-    transition: 0.5s ease;   /* Smooth animation */
-  }
-   nav ul li a:hover{
-          color: rgb(0, 0, 0);
-      }
-      ul li a:hover::after {
-    width: 100%;             
-  }
-   
-main{
+    border-radius: var(--radius);
+    padding: 12px;
     width: 100%;
-    height:90vh;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
 }
 
-.background{
-    background-image: url('./images/download.jpg');
-    Width:100%;
-    min-height:70vh;
-    background-position: center;
-    background-size: cover;
-    position:relative;
-    padding:15em 2em;
+.btn:hover {
+    background-color: #2980b9;
+}
 
-    
-    
-}
-/* .background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.1) 0%,
-        rgba(0, 0, 0, 0.4) 50%,
-        rgba(0, 0, 0, 0.6) 100%
-    );
-    z-index: 1;
-} */
-.background h1{
-    color:white;
-    font-size: 3em;
-    margin-top: 2em;
-    /* padding:5em 2em; */
-    
-}
-.background p{
-    color:white;
-    font-size: 1.5em;
-
-}
-.background button{
-    background-color:#69c5ff;
-    border: none;
-    color:white;
-    width:10%;
-    height:3em;
-    margin:2em 8em;
-    font-size: 1em;
-    border-radius:18px;
-}
-.background #loginbtn:hover{
-  background-color: rgb(2, 112, 180);
-  cursor: pointer;
-}
-.second{
-    margin: 4em 10em;
-    display:grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr;
-    width:80%;
-    height:80vh;
-    background-color:#6b4a4a;
-    
-}
-.image{
-    padding:2em 4em;
-    color:white;
-}
-.image img{
-    height:60vh;
-    border-radius: 20px;
-    
-}
- .image p{
- 
-    /* padding:0 1em; */
-    font-size: 1.2em;
-    line-height:1.5;
- }
- .description{
-   padding: 3em 3em 3em 0;
-    color:white;
- }
-.description p{
-    font-size:1.3em;
-    line-height: 1.5;
-}
-.grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    background-color: rgb(104, 104, 161);
-    height:20vh;
-    width:80%;
-    margin: 4em 10em;
+.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 10px;
+    border-radius: var(--radius);
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    color:white;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
 }
-.div h1{
- font-size: 3em;
-}
-.div p{
-    font-size: 1.3em;
-}
-.header{
-    margin:4em 10em 0em 10em;
-    background-color:#1B263B;
-    color:white;
-    height:10vh;
-    width: 80%;
+
+/* Featured Section */
+.second {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1200px;
+    margin: 4rem auto;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
+
+.image {
+    flex: 1;
+    min-width: 300px;
+    padding: 0;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.description {
+    flex: 1.5;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.description h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.description p {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Stats Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 4rem auto;
+    background: var(--accent-color); /* Updated to match theme */
+    padding: 3rem;
+    border-radius: 20px;
+    color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.div h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.div p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Why Choose Us & Gallery */
+.header h1 {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
 .grid-section {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 2em; 
-    background-color: #415A77;
-    margin: 0em 10em 4em 10em;
-    min-height: 100vh;
-    width: 80%;
-    padding: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
 }
 
-.grid-section img {
-    height: 40vh;
-    width: 100%;   
-    object-fit: cover;
-    border-radius: 8px; 
-}
-.grid-section h2{
-    color:white;
-    text-align: center;
-    justify-content: center;
-}
-.team{
-    justify-content: center;
-    display: flex;
-    margin-bottom:0em;
-}
-.meet-team{
- display:grid;
- grid-template-columns: 1fr 1fr 1fr 1fr;
- gap:2em;
- height:70vh;
- width:80%;
- margin: 0em 10em 0em 10em;
-   background-color: #2F2928;
-   color:white;
-   padding:2em;
-}
-.members img{
-    height:40vh;
-    width:100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-.members p{
-    text-align: center;
-    margin:0;
-    font-size: 1.1em;
-}
-.members h2{
-    text-align: center;
+.section {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
+.section:hover {
+    transform: translateY(-10px);
+}
+
+.section img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+}
+
+.section h2 {
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* Team Section */
+.team {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    /* color: var(--primary-color); Use default text color which is dark, or primary */
+}
+.team h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.meet-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+}
+
+.members {
+    text-align: center;
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.members:hover {
+    transform: translateY(-5px);
+}
+
+.members img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--accent-color);
+}
+
+.members h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.members p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Testimonials */
 .testimonial-section {
-  text-align: center;
-  padding: 50px 20px;
-  background: #f9dada;
-  margin:0 10em;
-  margin-top: 2em;
-  height:30vh;
-  width:80%;
- 
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: #eef2f3;
 }
 
 .testimonial-section h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
-.testimonial-section p {
-  max-width: 800px;
-  margin: 0 auto 40px;
-  font-size: 16px;
-  font-style:bold;
-  color: #2a2828;
-  line-height: 1.6;
+.testimonial-section > p {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: #666;
 }
 
 .testimonial-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
-  background: #ffe2e9;
-  flex-wrap: wrap;
-  min-height: 50vh;
-  margin:0 10em;
-  width:80%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .testimonial-card {
-  border-radius: 12px;
-  padding: 20px;
-  width: 300px;
-  text-align: left;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 350px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    transition: var(--transition);
 }
 
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Override custom card colors if you want a clean uniform look, 
+   else keep slightly specialized classes but modernized */
+.card1 { border-top: 5px solid #9ab6dc; }
+.card2 { border-top: 5px solid #ff9933; }
+.card3 { border-top: 5px solid #34495e; color: inherit; } /* Removed dark bg to consistent white card style */
+.card3 p, .card3 h4, .card3 span { color: inherit; } /* Reset text color */
+
 .testimonial-card p {
-  font-style: italic;
-  margin: 20px;
-  font-size: 1.2em;
-  line-height:1.3em;
-  
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1.5rem;
 }
 
 .testimonial-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
 }
 
 .testimonial-footer img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .testimonial-footer h4 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;   
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
 }
-
 
 .testimonial-footer span {
-  display: block;
-  font-size: 14px;
-  color: #252121;
+    font-size: 0.85rem;
+    color: #777;
 }
 
-/* Custom colors for each card */
-.card1 { background: #9ab6dc;}
-.card2 { background: #ff9933; }
-.card3 { background: #003f87; color: #fff; }
-.card3 p { color: #fff; }
-.card3 h4 { color: #fff; }
-.card3 span { color: #eee; }
-
-/* responsive design */
-/* 📱 Mobile (up to 768px) */
+/* Responsive */
 @media (max-width: 768px) {
-  .background {
-    padding: 8em 1em;
-    text-align: center;
-  }
-  
-  .background h1 {
-    font-size: 2em;
-  }
+    nav .menu-icon {
+        display: block;
+    }
 
-  .background p {
-    font-size: 1.2em;
-  }
-  .second {
-    grid-template-columns: 1fr;
-    margin:2em auto;
-    width: 90%;
-    height: auto;
-  }
-.image{
-  margin:auto;
+    nav #ul {
+        display: none; /* Add JS to toggle this */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--secondary-color);
+        padding: 2rem;
+        gap: 1rem;
+    }
+    
+    /* Simple JS toggle support class */
+    nav #ul.active {
+        display: flex;
+    }
+
+    .background h1 {
+        font-size: 2.5rem;
+    }
+
+    .second {
+        flex-direction: column;
+    }
+
+    .description {
+        padding: 2rem;
+    }
 }
-.description{
-  padding:2em 3em;
-}
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    height: auto;
-    margin: auto;
-    padding: 1em 1em;
-  }
-
-  .header {
-    width: 90%;
-    margin: 2em auto;
-    height: auto;
-    padding: 1em;
-  }
-
-  .grid-section {
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
-    margin: 2em auto;
-  }
-
-  .meet-team {
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
-    margin: 2em auto;
-    height: auto;
-  }
-
-  .testimonial-section,
-  .testimonial-cards {
-    width: 90%;
-    margin: 2em auto;
-  }
-}
-
-/* 📱 Small Mobile (up to 480px) */
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
-    margin: auto;
-  }
-  .grid-section {
-    grid-template-columns: 1fr;
-  }
-  .meet-team {
-    grid-template-columns: 1fr;
-  }
-  /* .testimonial-section,
-  .testimonial-cards {
-    width: 90%;
-    margin: 2em auto;
-  } */
-  .background h1 {
-    font-size: 1em;
-  }
-  .background p {
-    font-size: 1em;
-  }
-  .background button{
-    width: 15%;
-  }
-}
-
-
